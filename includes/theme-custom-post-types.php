@@ -105,7 +105,7 @@ if (!function_exists('woo_supportpress_post_types_init')) {
 	            'rewrite' => array( 'slug' => 'knowledgebase', 'with_front' => false ),
 	            'query_var' => true,
 	            'has_archive' => 'knowledgebase',
-	            'supports' => array( 'title', 'custom-fields', 'editor', 'author'/*, 'comments'*/ ),
+	            'supports' => array( 'title', 'custom-fields', 'page-attributes', 'editor', 'author'/*, 'comments'*/ ),
 	        )
 	    );
 

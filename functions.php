@@ -44,7 +44,29 @@ foreach ( $includes as $i ) {
 /* You can add custom functions below */
 /*-----------------------------------------------------------------------------------*/
 
+function wordpresscanvas_exclude_category( $query ) {
+	$sort_by_menu_order = false;
 
+	$whitelist = array( 'knowledgebase_category', 'knowledgebase_tags');
+
+
+	if ( isset( $query->tax_query->queries[0]['taxonomy'] ) && 
+	in_array( $query->tax_query->queries[0]['taxonomy'], $whitelist ) &&
+	$query->is_main_query() ) {
+		$sort_by_menu_order = true;
+	}
+	if ( is_post_type_archive( 'knowledgebase' ) ) {
+		$sort_by_menu_order = true;
+	}
+
+	if ( $sort_by_menu_order ) {
+		pr('hey');
+		$query->set('orderby', 'menu_order');
+		$query->set('order', 'DESC');
+	}
+
+}
+add_action( 'pre_get_posts', 'wordpresscanvas_exclude_category' );
 
 
 
