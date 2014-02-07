@@ -67,7 +67,22 @@ function wordpresscanvas_exclude_category( $query ) {
 }
 add_action( 'pre_get_posts', 'wordpresscanvas_exclude_category' );
 
+function __notify_admin_on_publish( $new_status, $old_status, $post ) {
+	if ( current_user_can( 'subscriber' ) ) {
+		/* if ( $new_status != 'publish' || $old_status == 'publish' )
+			return;
 
+		$whitelist = array( 'message', 'ticket' );
+		if ( ! in_array( $post->post_type, $whitelist ) )
+			return; */
+
+		$message = 'View it: ' . get_permalink( $post->ID ) . "\nEdit it: " . get_edit_post_link( $post->ID );
+		if ( $post_type = get_post_type_object( $post->post_type ) )    
+			wp_mail( get_option( 'admin_email' ), 'New ' . $post_type->labels->singular_name, $message );
+	}
+
+}
+add_action( 'transition_post_status', '__notify_admin_on_publish', 10, 3 );
 
 
 
