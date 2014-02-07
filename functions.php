@@ -60,7 +60,6 @@ function wordpresscanvas_exclude_category( $query ) {
 	}
 
 	if ( $sort_by_menu_order ) {
-		pr('hey');
 		$query->set('orderby', 'menu_order');
 		$query->set('order', 'DESC');
 	}
