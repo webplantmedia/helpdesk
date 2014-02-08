@@ -80,7 +80,7 @@ if (!function_exists('woo_supportpress_post_types_init')) {
 	        array(
 	        	'label' => __( 'KB article', 'woothemes' ),
 	            'labels' => array(
-					'name' 					=> __( 'KB articles', 'woothemes' ),
+					'name' 					=> __( 'Knowledgebase', 'woothemes' ),
 					'singular_name' 		=> __( 'Knowledgebase article', 'woothemes' ),
 					'menu_name'				=> _x( 'KB articles', 'Admin menu name', 'woothemes' ),
 					'add_new' 				=> __( 'Add New', 'woothemes' ),

@@ -2902,6 +2902,7 @@ span.error:before {
 .new-ticket-form #title.loading,
 .edit-profile-form #title.loading {
   background: #ffffff url(../images/ajax-loader.gif) 98% no-repeat !important;
+  -webkit-transition: all 0 ease 0;
 }
 .new-ticket-form .col-1,
 .edit-profile-form .col-1,
@@ -3507,6 +3508,7 @@ ul.updates li.last {
 }
 #contactForm #title.loading {
   background: #ffffff url(../images/ajax-loader.gif) 98% no-repeat !important;
+  -webkit-transition: all 0 ease 0;
 }
 #contactForm .col-1,
 #contactForm .col-2 {

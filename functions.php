@@ -76,16 +76,21 @@ function __notify_admin_on_publish( $new_status, $old_status, $post ) {
 		if ( ! in_array( $post->post_type, $whitelist ) )
 			return; */
 
-		$message = 'View it: ' . get_permalink( $post->ID ) . "\nEdit it: " . get_edit_post_link( $post->ID );
-		if ( $post_type = get_post_type_object( $post->post_type ) )    
-			wp_mail( get_option( 'admin_email' ), 'New ' . $post_type->labels->singular_name, $message );
+		if ( $post_type = get_post_type_object( $post->post_type ) ) {
+
+			if ( 'new' == $old_status )
+				$title = 'New ' . $post_type->labels->singular_name;
+			else
+				$title = $post_type->labels->singular_name . ' Updated';
+
+			$message = 'View it: ' . get_permalink( $post->ID );
+
+			wp_mail( get_option( 'admin_email' ), $title, $message );
+		}
 	}
 
 }
 add_action( 'transition_post_status', '__notify_admin_on_publish', 10, 3 );
-
-
-
 
 
 
