@@ -78,10 +78,14 @@ function __notify_admin_on_publish( $new_status, $old_status, $post ) {
 
 		if ( $post_type = get_post_type_object( $post->post_type ) ) {
 
-			if ( 'new' == $old_status )
+			if ( 'new' == $old_status ) {
 				$title = 'New ' . $post_type->labels->singular_name;
-			else
-				$title = $post_type->labels->singular_name . ' Updated';
+			}
+			else {
+				// $title = $post_type->labels->singular_name . ' Updated';
+
+				return;
+			}
 
 			$message = 'View it: ' . get_permalink( $post->ID );
 
