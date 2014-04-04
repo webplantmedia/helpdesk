@@ -95,6 +95,12 @@ $options[] = array( "name" => __( 'Custom Logo', 'woothemes' ),
 					"std" => "",
 					"type" => "upload" );
 
+$options[] = array( "name" => __( 'Logo URL', 'woothemes' ),
+					"desc" => __( 'Enter your preferred URL when your logo is clicked.', 'woothemes' ),
+					"id" => $shortname."_logo_url",
+					"std" => "",
+					"type" => "text" );
+
 $options[] = array( "name" => __( 'Text Title', 'woothemes' ),
     				'desc' => sprintf( __( 'Enable text-based Site Title and Tagline. Setup title & tagline in %1$s.', 'woothemes' ), '<a href="' . esc_url( home_url() ) . '/wp-admin/options-general.php">' . __( 'General Settings', 'woothemes' ) . '</a>' ),
 					"id" => $shortname."_texttitle",

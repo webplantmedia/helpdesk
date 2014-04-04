@@ -62,7 +62,12 @@
 
 				<?php if ($woo_options['woo_texttitle'] <> "true") : $logo = $woo_options['woo_logo']; ?>
 
-					<<?php echo $logo_tag; ?> class="site-title"><a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('description'); ?>">
+					<?php 
+					$logo_url = get_option('woo_logo_url');
+					if ( empty( $logo_url ) )
+						$logo_url = get_bloginfo('url');
+					?>
+					<<?php echo $logo_tag; ?> class="site-title"><a href="<?php echo $logo_url; ?>" title="<?php bloginfo('description'); ?>">
 						<img src="<?php if ($logo) echo $logo; else { bloginfo('template_directory'); ?>/images/logo.png<?php } ?>" alt="<?php bloginfo('name'); ?>" />
 					</a></<?php echo $logo_tag; ?>>
 
